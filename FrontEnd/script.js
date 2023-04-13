@@ -1,5 +1,24 @@
-// Récuperation API projets de l’architecte
+// Redirection de l'user vers les pages adapter
+//Changement de text login logout
+const linkLogin = document.getElementById("link-login");
+linkLogin.addEventListener("click", () => {
+  let verificationToken = localStorage.getItem("SessionToken");
+  if (verificationToken === null || verificationToken === "") {
+    document.location.href = "login.html";
+  } else {
+    localStorage.setItem("SessionToken", "");
+    linkLogin.innerText = "Login";
+  }
+});
+let verificationToken = localStorage.getItem("SessionToken");
+console.log(linkLogin);
+if (verificationToken === null || verificationToken === "") {
+  linkLogin.innerText = "Login";
+} else {
+  linkLogin.innerText = "Logout";
+}
 
+// Récuperation API projets de l’architecte
 const reponses = await fetch("http://localhost:5678/api/works");
 console.log(reponses);
 const works = await reponses.json();
