@@ -49,10 +49,14 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
+	
+	
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+.content {
+	max-width: 1140px;
+	margin:auto;
 }
 header {
 	display: flex;
@@ -106,11 +110,12 @@ li:hover {
 #introduction figure {
 	flex: 1
 }
-#introduction img {
+#introduction img, #strip-img {
 	display: block;
 	margin: auto;
 	width: 80%;
 }
+
 
 #introduction article {
 	flex: 1
@@ -268,4 +273,45 @@ margin: auto;
 }
 a {
 	color: black;
+}
+
+#strip {
+	background-color: black;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 3rem;
+}
+.strip__editing {
+	color: white;
+}
+.strip__change {
+	text-align: center;
+	background-color: white;
+	width: 12%;
+	margin-left: 2%;
+	padding: 0.6rem;
+	border-radius: 60px;
+	font-size: 85%;
+}
+.light {
+	margin-right: 0.4rem;
+	font-size: 1rem;
+	font-weight: 100;
+}
+.displaynone {
+	display: none!important;
+}
+#strip-user {
+	padding-bottom: 2rem;
+}
+#strip-img {
+	margin-top: 1rem;
+}
+.project {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	gap: 2rem;
 }

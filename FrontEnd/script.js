@@ -1,6 +1,10 @@
 // Redirection de l'user vers les pages adapter
 //Changement de text login logout
 const linkLogin = document.getElementById("link-login");
+const strip = document.getElementById("strip");
+const stripImg = document.getElementById("strip-img");
+const stripUser = document.getElementById("strip-user");
+const striProject = document.getElementById("strip-project");
 linkLogin.addEventListener("click", () => {
   let verificationToken = localStorage.getItem("SessionToken");
   if (verificationToken === null || verificationToken === "") {
@@ -8,14 +12,26 @@ linkLogin.addEventListener("click", () => {
   } else {
     localStorage.setItem("SessionToken", "");
     linkLogin.innerText = "Login";
+    stripImg.classList.add("displaynone");
+    stripUser.classList.add("displaynone");
+    striProject.classList.add("displaynone");
+    strip.classList.add("displaynone");
   }
 });
 let verificationToken = localStorage.getItem("SessionToken");
 console.log(linkLogin);
 if (verificationToken === null || verificationToken === "") {
+  stripImg.classList.add("displaynone");
+  stripUser.classList.add("displaynone");
+  striProject.classList.add("displaynone");
+  strip.classList.add("displaynone");
   linkLogin.innerText = "Login";
 } else {
   linkLogin.innerText = "Logout";
+  strip.classList.remove("displaynone");
+  stripImg.classList.remove("displaynone");
+  stripUser.classList.remove("displaynone");
+  striProject.classList.remove("displaynone");
 }
 
 // Récuperation API projets de l’architecte
