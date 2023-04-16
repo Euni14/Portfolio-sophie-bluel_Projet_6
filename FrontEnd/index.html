@@ -28,7 +28,7 @@
     </div>
     <div class="content">
       <header>
-        <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
         <nav>
           <ul>
             <li>projets</li>
@@ -75,11 +75,98 @@
         <section id="portfolio">
           <div class="project">
             <h2>Mes Projets</h2>
-            <span id="strip-project" class="displaynone">
+            <a href="#modale" id="strip-project" class="displaynone">
               <i class="fa fa-light fa-pen-to-square light"></i>
               Mode édition
-            </span>
+            </a>
           </div>
+          <!--boite modale-->
+          <!-- fond du modale-->
+          <div id="pagemodal" class="modal-wrapper">
+            <!-- contenant commun du modale -->
+            <div class="modal-content">
+              <!-- titre et bouton du modale -->
+              <!--bouton commun du modale -->
+              <div class="modal-content-header">
+                <i
+                  class="fa-solid fa-arrow-left visibilityhidden"
+                  id="left"
+                ></i>
+                <i class="fa fa-times" id="close"></i>
+              </div>
+              <!-- modale un -->
+              <!-- titre du modale-->
+              <div class="modal-content-one" id="modal-content-one">
+                <h2 class="modal-content-title">Galerie photo</h2>
+                <div class="modal-content-gallery" id="modal-content-gallery">
+                  <!-- Contenu dynamique -->
+                </div>
+                <div class="modal-content-footer">
+                  <hr />
+                  <button class="modal-button" id="addphoto">
+                    Ajouter une photo
+                  </button>
+                  <a href="#" id="deleteall">Supprimer la galerie</a>
+                </div>
+              </div>
+              <!-- Modale deux  -->
+              <div class="modal-content-two displaynone" id="modal-content-two">
+                <h2 class="modal-content-title">Ajout photo</h2>
+                <section id="add-image">
+                  <form action="#">
+                    <div class="image-content">
+                      <i class="fa fa-image add-image-icon"></i>
+                      <label for="add-file-input" class="add-file-button"
+                        >+ Ajouter photo</label
+                      >
+                      <input
+                        name="add-image-input"
+                        id="add-image-input"
+                        class="add-image-input"
+                        type="file"
+                        accept="image/jpeg, image/png"
+                        required
+                      />
+                      <p>jpg, png : 4mo max</p>
+                      <img id="picture-added" src="#" alt="" />
+                    </div>
+
+                    <label for="title">Titre</label>
+                    <input type="text" name="title" id="title" required />
+                    <label for="category-select">Catégorie</label>
+                    <select
+                      class="select"
+                      name="categories"
+                      id="category-select"
+                      required
+                    >
+                      <option
+                        value=""
+                        label=" "
+                        selected
+                        disabled
+                        hidden
+                      ></option>
+                      <!-- contenu dynamique -->
+                    </select>
+                    <hr />
+                    <button class="modal-button">Valider</button>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+          <!--<aside
+            id="modale"
+            class="modalebox displaynonemodale"
+            aria-hidden="true"
+            role="dialog"
+            aria-labelledby="modaletitle"
+          >
+            <div class="modalecontent">
+              <h1 id="modaletitle">Galerie photo</h1>
+            </div>
+          </aside>-->
           <!-- pour mettre les filtres-->
           <div id="filter">
             <!--ajout du filtre par défaut(Tous)-->

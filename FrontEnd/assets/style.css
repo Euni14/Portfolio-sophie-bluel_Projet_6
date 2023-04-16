@@ -315,3 +315,129 @@ a {
 	align-items: baseline;
 	gap: 2rem;
 }
+
+/* style boite modale*/
+.modal-wrapper {
+	display: none; /* ne s'affiche pas par defaut */
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgba(0,0,0,0.4); 
+  }
+  
+  /* le modale */
+.modal-content {
+	/*position: fixed;
+	top: 25%;
+	left: 25%;
+	right: 25%;*/
+	background-color: #fefefe;
+	/*margin: 35% auto;*/
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%; 
+	border-radius: 15px;
+  }
+/* style bouton */
+  .modal-content-header{
+	display: flex;
+    justify-content: space-between;
+	width: 95%;
+	padding-top: 15px;
+  }
+  
+  
+  #close:hover,
+  #close:focus,
+  #left:hover,
+  #left:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+  .modal-content-title{
+	color: black;
+	font-size: 200%;
+}
+ .visibilityhidden{
+	visibility: hidden!important;
+ }
+
+ .modal-content-footer{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap:30px;
+ }
+ .modal-content-footer hr{
+	width: 100%;
+   color:black;
+   margin-top: 30px;;
+ }
+
+.modal-button{
+	border-radius: 20px;
+    padding: 0% 1.5% 0% 1.5%;
+	height: 36px;	
+	font-family: 'Syne';
+	font-weight: 700;
+	margin : 8px;
+	text-align: center;
+	border-radius: 60px ;
+	color: white;
+	background-color:  #1D6154;
+}
+
+ /* modal un */
+.modal-content-one{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+	margin:auto;
+	padding: 15px 0px 15px 0px;
+  }
+  .modal-content-gallery{
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap:2%;
+  }
+  .modal-content-gallery figure{
+	flex-basis: 18%;
+	margin-top: 15px;
+	position: relative;
+  }
+  .modal-content-gallery img{
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .modal-content-gallery-img-icons{
+	width: 100%;
+    position: absolute;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .modalimageicon{
+	color:white;
+	background-color: black;
+	padding: 2px;
+	border-radius: 2px;
+	margin: 6px 2px 2px 2px;	
+  }
+
+  #deleteall{
+	text-decoration: none;
+	color:#D8000C;
+  }
