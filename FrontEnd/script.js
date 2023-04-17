@@ -165,7 +165,7 @@ document.addEventListener("click", function (event) {
     pagemodal.style.display = "none";
   }
 });
-
+//suppression de projet
 async function deletework(workid) {
   await fetch("http://localhost:5678/api/works/" + workid, {
     method: "DELETE",
@@ -174,7 +174,7 @@ async function deletework(workid) {
       Authorization: `Bearer ${localStorage.getItem("SessionToken")}`,
     },
   });
-
+  // affichage apres suppression
   let pagemodalreponses = await fetch("http://localhost:5678/api/works");
   let pagemodalworks = await pagemodalreponses.json();
 
@@ -245,12 +245,31 @@ async function deleteallworks() {
 
 const addphoto = document.getElementById("addphoto");
 const leftarrow = document.getElementById("left");
-addphoto.addEventListener("click", () => {
+addphoto.addEventListener("click", async () => {
   let modalcontenttwo = document.getElementById("modal-content-two");
   let modalcontentone = document.getElementById("modal-content-one");
   modalcontenttwo.classList.remove("displaynone");
   leftarrow.classList.remove("visibilityhidden");
   modalcontentone.classList.add("displaynone");
+
+  let modalcategoriesselection = document.getElementById(
+    "modal-categories-selection"
+  );
+  let reponseCategories = await fetch("http://localhost:5678/api/categories");
+  let jsonCategories = await reponseCategories.json();
+  modalcategoriesselection.replaceChildren();
+  let optdefault = document.createElement("option");
+  optdefault.value = "";
+  optdefault.innerHTML = "";
+  modalcategoriesselection.appendChild(optdefault);
+  for (let jsonCategory of jsonCategories) {
+    let opt = document.createElement("option");
+    opt.value = jsonCategory.id;
+    opt.innerHTML = jsonCategory.name;
+    console.log(modalcategoriesselection);
+    console.log(opt);
+    modalcategoriesselection.appendChild(opt);
+  }
 });
 
 left.addEventListener("click", () => {
@@ -259,4 +278,65 @@ left.addEventListener("click", () => {
   modalcontenttwo.classList.add("displaynone");
   leftarrow.classList.add("visibilityhidden");
   modalcontentone.classList.remove("displaynone");
+});
+/* gestion image */
+const inputfile = document.getElementById("file-image-input");
+const imgadded = document.getElementById("image-added");
+inputfile.addEventListener("change", showFileName);
+imgadded.addEventListener("click", () => {
+  imgadded.classList.remove("image-added-after");
+  imgadded.src = "#";
+});
+function showFileName(event) {
+  imgadded.src = URL.createObjectURL(inputfile.files[0]);
+  imgadded.classList.add("image-added-after");
+}
+
+const addwork = document.getElementById("add-work");
+addwork.addEventListener("click", async (event) => {
+  event.preventDefault();
+  let inputfilevalue = document.getElementById("file-image-input").files[0];
+  let inputtitlevalue = document.getElementById("title").value;
+  let selectcategoryvalue = document.getElementById(
+    "modal-categories-selection"
+  ).value;
+
+  let work = {
+    image: inputfilevalue,
+    title: inputtitlevalue,
+    category: parseInt(selectcategoryvalue),
+  };
+  let bodyform = new FormData();
+  bodyform.append("image", inputfilevalue);
+  bodyform.append("title", inputtitlevalue);
+  bodyform.append("category", parseInt(selectcategoryvalue));
+  let response = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    body: bodyform,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("SessionToken")}`,
+    },
+  });
+
+  pagemodal.style.display = "none";
+  document.getElementById("modal-content-two").classList.add("displaynone");
+  imgadded.classList.remove("image-added-after");
+  imgadded.src = "#";
+  /* rafraichir */
+  let reponses = await fetch("http://localhost:5678/api/works");
+
+  let works = await reponses.json();
+
+  let gallery = document.querySelector("#gallery");
+  for (let work of works) {
+    let figureElement = document.createElement("figure");
+    let imgElement = document.createElement("img");
+    imgElement.src = work.imageUrl;
+    imgElement.alt = work.title;
+    let figcaptionElement = document.createElement("figcaption");
+    figcaptionElement.innerText = work.title;
+    figureElement.appendChild(imgElement);
+    figureElement.appendChild(figcaptionElement);
+    gallery.appendChild(figureElement);
+  }
 });

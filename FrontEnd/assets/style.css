@@ -98,6 +98,7 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	cursor: pointer;
 }
 
 li:hover {
@@ -195,7 +196,7 @@ footer nav ul {
 /* style des filtres*/
 .category{
 	border-radius: 20px;
-padding: 0% 1.5% 0% 1.5%;
+	padding: 0% 1.5% 0% 1.5%;
 	height: 36px;
 	color: #1D6154; 
 	background-color:  white;
@@ -204,6 +205,7 @@ padding: 0% 1.5% 0% 1.5%;
 	margin : 8px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
 }
 
 .category_selected{
@@ -220,7 +222,7 @@ padding: 0% 1.5% 0% 1.5%;
 	margin-bottom: 40px;
 }
 
-/* création de la page de connexion pour authentification */
+/*login-html création de la page de connexion pour authentification */
 #login {
 	width: 40%;
 margin: auto;
@@ -274,7 +276,7 @@ margin: auto;
 a {
 	color: black;
 }
-
+/*index-html bande noire en haut de la page*/
 #strip {
 	background-color: black;
 	display: flex;
@@ -329,17 +331,17 @@ a {
 	background-color: rgba(0,0,0,0.4); 
   }
   
-  /* le modale */
+  /* div des modales */
 .modal-content {
-	/*position: fixed;
-	top: 25%;
-	left: 25%;
-	right: 25%;*/
+	display: block;
+	align-items: flex-end;
+	margin: auto;
+	position: relative;
+	top: 10%;
 	background-color: #fefefe;
-	/*margin: 35% auto;*/
 	padding: 20px;
 	border: 1px solid #888;
-	width: 50%; 
+	width: 38%; 
 	border-radius: 15px;
   }
 /* style bouton */
@@ -350,7 +352,7 @@ a {
 	padding-top: 15px;
   }
   
-  
+  /* les bouton X et fleche*/
   #close:hover,
   #close:focus,
   #left:hover,
@@ -364,6 +366,7 @@ a {
 	color: black;
 	font-size: 200%;
 }
+/*visibilite du bouton fleche retour*/
  .visibilityhidden{
 	visibility: hidden!important;
  }
@@ -382,16 +385,17 @@ a {
  }
 
 .modal-button{
-	border-radius: 20px;
-    padding: 0% 1.5% 0% 1.5%;
-	height: 36px;	
 	font-family: 'Syne';
 	font-weight: 700;
-	margin : 8px;
 	text-align: center;
+	width: 45%;
 	border-radius: 60px ;
+    padding:  3%;	
+	margin : 5px;
 	color: white;
 	background-color:  #1D6154;
+	cursor: pointer;
+	
 }
 
  /* modal un */
@@ -434,10 +438,102 @@ a {
 	background-color: black;
 	padding: 2px;
 	border-radius: 2px;
-	margin: 6px 2px 2px 2px;	
+	margin: 6px 2px 2px 2px;
+	cursor: pointer;	
   }
 
   #deleteall{
 	text-decoration: none;
 	color:#D8000C;
+	cursor: pointer;
+  }
+  /* modale deux */
+  .modal-content-two{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 80%;
+	margin:auto;
+	padding: 15px 0px 15px 0px;
+  }
+#add-image {
+	width: 100%;
+    margin: auto;
+}
+#add-image > * {
+	text-align: center;
+
+}
+#add-image h2{
+	margin-bottom: 20px;
+}
+#add-image form {
+	text-align: left;
+	margin-top:10px;
+	display: flex;
+	flex-direction: column;
+}
+
+#add-image input,#add-image select {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#add-image label {
+	margin: 2em 0 1em 0;
+}
+#add-image textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#add-image p>a {
+	color: black;
+	border: none;
+	text-align: center;	
+}
+#add-image hr{
+	width: 100%;
+   color:black;
+   margin-top: 50px;;
+ }
+.image-content{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin:auto;
+	align-items: center;
+	background-color: #E8F1F7;
+	height: 250px;
+}
+
+.add-image-icon{
+	color:#CBD6DC;
+	font-size: 62px;
+	margin-top: 5px;
+}
+
+.add-file-input-button{
+color: #306685;
+background-color: #CBD6DC;
+border-color: #306685;
+border-radius: 15px;
+padding: 10px 20px 10px 20px;
+cursor: pointer;
+}
+
+input[type="file"] { 
+	z-index: -1;
+	position: absolute;
+	opacity: 0;
+  }
+
+
+  .image-added-after{
+	position: absolute;
+	margin:auto;
+    width: 15%;
+	height: 250px;
+    object-fit: cover;
+    z-index: 1;
   }
