@@ -55,7 +55,11 @@ body {
 	font-size: 14px;
 }
 .content {
+	
+	display:flex; 
+	flex-direction:column;
 	max-width: 1140px;
+	min-height: 100vh; 
 	margin:auto;
 }
 header {
@@ -258,8 +262,11 @@ margin: auto;
 	color: black;
 	border: none;
 	text-align: center;	
+	text-decoration: underline;
 }
-
+.login-bold {
+	font-weight: bold;
+}
 .bottomfooter{
 	margin-top: auto;
 }
@@ -334,10 +341,9 @@ a {
   /* div des modales */
 .modal-content {
 	display: block;
-	align-items: flex-end;
 	margin: auto;
 	position: relative;
-	top: 10%;
+	top: 5%;
 	background-color: #fefefe;
 	padding: 20px;
 	border: 1px solid #888;
@@ -365,6 +371,7 @@ a {
   .modal-content-title{
 	color: black;
 	font-size: 200%;
+	margin: 1rem 0rem 1rem 0rem;
 }
 /*visibilite du bouton fleche retour*/
  .visibilityhidden{
@@ -387,6 +394,7 @@ a {
 .modal-button{
 	font-family: 'Syne';
 	font-weight: 700;
+	font-size: 1.2rem;
 	text-align: center;
 	width: 45%;
 	border-radius: 60px ;
@@ -462,6 +470,7 @@ a {
 }
 #add-image > * {
 	text-align: center;
+	gap: 0.3rem;
 
 }
 #add-image h2{
@@ -479,6 +488,7 @@ a {
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-bottom: 1rem;
 }
 #add-image label {
 	margin: 2em 0 1em 0;
@@ -495,31 +505,37 @@ a {
 #add-image hr{
 	width: 100%;
    color:black;
-   margin-top: 50px;;
+   margin-top: 50px;
  }
 .image-content{
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
 	width: 100%;
-	margin:auto;
-	align-items: center;
-	background-color: #E8F1F7;
 	height: 250px;
+	margin:auto;	
+	background-color: #E8F1F7;
+	
 }
 
 .add-image-icon{
 	color:#CBD6DC;
-	font-size: 62px;
-	margin-top: 5px;
+	font-size: 6rem;
 }
 
 .add-file-input-button{
 color: #306685;
+font-weight: 700;
 background-color: #CBD6DC;
 border-color: #306685;
-border-radius: 15px;
-padding: 10px 20px 10px 20px;
+font-size: 1.2rem;
+border-radius: 20px;
+padding: 12px 20px 12px 20px;
 cursor: pointer;
+}
+.size-image {
+	font-size: 1.3rem;
 }
 
 input[type="file"] { 
@@ -537,3 +553,12 @@ input[type="file"] {
     object-fit: cover;
     z-index: 1;
   }
+  .error-modal{
+	color: #D8000C;
+	background-color: #FFBABA;
+	margin: 2em;
+	border: 1px solid;
+	margin: 10px 0px;
+	padding: 15px 10px 15px 50px;
+	display: none;
+}

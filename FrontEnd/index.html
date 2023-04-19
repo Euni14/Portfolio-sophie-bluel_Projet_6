@@ -27,7 +27,9 @@
       </p>
       <p class="strip__change">publier les changements</p>
     </div>
+    <!-- la page du site -->
     <div class="content">
+      <!-- entete et lien de navigtion -->
       <header>
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
         <nav>
@@ -44,6 +46,7 @@
         <section id="introduction">
           <figure>
             <img src="./assets/images/sophie-bluel.png" alt="" />
+            <!-- bouton modifier -->
             <p id="strip-img" class="displaynone">
               <i class="fa fa-light fa-pen-to-square light"></i>
               Mode édition
@@ -51,10 +54,12 @@
           </figure>
 
           <article>
+            <!-- bouton modifier -->
             <p id="strip-user" class="displaynone">
               <i class="fa fa-light fa-pen-to-square light"></i>
               Mode édition
             </p>
+            <!-- description de la page web -->
             <h2>Designer d'espace</h2>
             <p>
               Je raconte votre histoire, je valorise vos idées. Je vous
@@ -76,6 +81,7 @@
         <section id="portfolio">
           <div class="project">
             <h2>Mes Projets</h2>
+            <!-- lien vers la page modale -->
             <a href="#modale" id="strip-project" class="displaynone">
               <i class="fa fa-light fa-pen-to-square light"></i>
               Mode édition
@@ -121,6 +127,8 @@
             <!-- Modale deux  -->
             <div class="modal-content-two displaynone" id="modal-content-two">
               <h2 class="modal-content-title">Ajouter photo</h2>
+              <!-- message d'erreur du remplissage des modales -->
+              <div class="error-modal" id="error-modal"></div>
               <section id="add-image">
                 <form action="#" method="POST">
                   <div class="image-content">
@@ -136,7 +144,7 @@
                       accept="image/jpeg, image/png"
                       required
                     />
-                    <p>jpg, png : 4mo max</p>
+                    <p class="size-image">jpg, png : 4mo max</p>
                     <img id="image-added" src="#" alt="" />
                   </div>
 
