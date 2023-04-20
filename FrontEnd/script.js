@@ -6,6 +6,8 @@ const strip = document.getElementById("strip");
 const stripImg = document.getElementById("strip-img");
 const stripUser = document.getElementById("strip-user");
 const striProject = document.getElementById("strip-project");
+const categoryFilter = document.querySelector("#filter");
+
 linkLogin.addEventListener("click", () => {
   let verificationToken = localStorage.getItem("SessionToken");
   if (verificationToken === null || verificationToken === "") {
@@ -17,6 +19,7 @@ linkLogin.addEventListener("click", () => {
     stripUser.classList.add("displaynone");
     striProject.classList.add("displaynone");
     strip.classList.add("displaynone");
+    categoryFilter.classList.remove("visibilityhidden");
   }
 });
 // au chargement de la page index verification de l'autenthification
@@ -26,6 +29,7 @@ if (verificationToken === null || verificationToken === "") {
   stripUser.classList.add("displaynone");
   striProject.classList.add("displaynone");
   strip.classList.add("displaynone");
+  categoryFilter.classList.remove("visibilityhidden");
   linkLogin.innerText = "Login";
 } else {
   //mode autenthifiée
@@ -34,6 +38,7 @@ if (verificationToken === null || verificationToken === "") {
   stripImg.classList.remove("displaynone");
   stripUser.classList.remove("displaynone");
   striProject.classList.remove("displaynone");
+  categoryFilter.classList.add("visibilityhidden");
 }
 
 // Récuperation API projets de l’architecte
@@ -57,7 +62,6 @@ for (let work of works) {
 // Récupération des donnés du categorie
 const reponseCategories = await fetch("http://localhost:5678/api/categories");
 const jsonCategories = await reponseCategories.json();
-const categoryFilter = document.querySelector("#filter");
 for (const jsonCategory of jsonCategories) {
   const buttonElement = document.createElement("button");
   buttonElement.innerText = jsonCategory.name;
