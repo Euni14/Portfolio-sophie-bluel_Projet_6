@@ -289,9 +289,43 @@ function showFileName(event) {
   imgadded.classList.add("image-added-after");
 }
 // ajout de projet dans la galerie
+// changement du couleur du bouton valider
+document
+  .getElementById("file-image-input")
+  .addEventListener("change", () => addworkbuttonenabled());
+document
+  .getElementById("title")
+  .addEventListener("change", () => addworkbuttonenabled());
+document
+  .getElementById("modal-categories-selection")
+  .addEventListener("change", () => addworkbuttonenabled());
+
+function addworkbuttonenabled() {
+  document.getElementById("error-modal").innerText = "";
+  document.getElementById("error-modal").style.display = "none";
+  let addworkbutton = document.getElementById("add-work");
+  let inputfilevalue = document.getElementById("file-image-input").files[0];
+  let inputtitlevalue = document.getElementById("title").value;
+  let selectcategoryvalue = document.getElementById(
+    "modal-categories-selection"
+  ).value;
+  if (
+    inputfilevalue == undefined ||
+    inputtitlevalue == "" ||
+    isNaN(selectcategoryvalue) ||
+    selectcategoryvalue == 0
+  ) {
+    addworkbutton.classList.add("button-disabled");
+  } else {
+    addworkbutton.disabled = false;
+    addworkbutton.classList.remove("button-disabled");
+  }
+}
+
 const addwork = document.getElementById("add-work");
 addwork.addEventListener("click", async (event) => {
   event.preventDefault();
+
   let inputfilevalue = document.getElementById("file-image-input").files[0];
   let inputtitlevalue = document.getElementById("title").value;
   let selectcategoryvalue = document.getElementById(
@@ -303,32 +337,36 @@ addwork.addEventListener("click", async (event) => {
   if (inputfilevalue == undefined) {
     document.getElementById("error-modal").style.display = "block";
     document.getElementById("error-modal").innerText =
-      "- fichier obligatoire\n";
+      "* Veuillez ajouter un fichier \n";
   }
   //test taille de l'image
   if (inputfilevalue != undefined && inputfilevalue.size > 4000000) {
     document.getElementById("error-modal").style.display = "block";
     document.getElementById("error-modal").innerText =
-      "- Le fichier depasse 4mo \n";
+      "* Veuillez respecter la taille du fichier \n";
   }
   //test champ titre
   if (inputtitlevalue == "") {
     document.getElementById("error-modal").style.display = "block";
     document.getElementById("error-modal").innerText =
       document.getElementById("error-modal").innerText +
-      "- titre obligatoire\n";
+      "* Veuillez renseigner le titre\n";
   }
   //test categorie
   if (isNaN(selectcategoryvalue) || selectcategoryvalue == 0) {
     document.getElementById("error-modal").style.display = "block";
     document.getElementById("error-modal").innerText =
       document.getElementById("error-modal").innerText +
-      "- Category incorrect\n";
+      "* Veuillez entrer une categorie correcte\n";
   }
 
-  if (document.getElementById("error-modal").innerText != "") {
+  if (
+    document.getElementById("error-modal").innerText != "" ||
+    addwork.disabled
+  ) {
     return;
   }
+
   let work = {
     image: inputfilevalue,
     title: inputtitlevalue,

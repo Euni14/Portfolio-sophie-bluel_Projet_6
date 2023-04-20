@@ -113,7 +113,7 @@ li:hover {
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 #introduction img, #strip-img {
 	display: block;
@@ -146,7 +146,8 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
+	/*width: 186px;
+	height: 240px;*/
 }
 #contact {
 	width: 50%;
@@ -411,8 +412,8 @@ a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 80%;
 	margin:auto;
+	width: 80%;
 	padding: 15px 0px 15px 0px;
   }
   .modal-content-gallery{
@@ -421,6 +422,7 @@ a {
 	flex-wrap: wrap;
 	flex-direction: row;
 	gap:2%;
+	/*overflow: auto;*/
   }
   .modal-content-gallery figure{
 	flex-basis: 18%;
@@ -554,11 +556,14 @@ input[type="file"] {
     z-index: 1;
   }
   .error-modal{
-	color: #D8000C;
-	background-color: #FFBABA;
-	margin: 2em;
-	border: 1px solid;
-	margin: 10px 0px;
-	padding: 15px 10px 15px 50px;
 	display: none;
+	color: #e94040;
+	font-size: 100%;
+	line-height: 1.5;
+	
+}
+
+.button-disabled{
+	background-color: #A7A7A7!important;
+	border: 0;
 }
