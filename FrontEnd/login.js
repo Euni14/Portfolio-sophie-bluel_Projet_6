@@ -12,7 +12,7 @@ async function authentication() {
   let user = {
     email: username,
     password: password,
-  };
+  }; // objet json
 
   let response = await fetch("http://localhost:5678/api/users/login", {
     method: "POST",
@@ -29,14 +29,14 @@ async function authentication() {
   } else if (response.status == 401) {
     document.getElementById("errormessage").style.display = "block";
     document.getElementById("errormessage").innerText =
-      "mot de passe incorrect";
+      "* Mot de passe incorrect";
   } else if (response.status == 404) {
     document.getElementById("errormessage").style.display = "block";
     document.getElementById("errormessage").innerText =
-      "utilisateur introuvable";
+      "* Utilisateur introuvable";
   } else {
     document.getElementById("errormessage").style.display = "block";
     document.getElementById("errormessage").innerText =
-      "Mauvaise réponse du réseau";
+      "* Mauvaise réponse du réseau";
   }
 }
